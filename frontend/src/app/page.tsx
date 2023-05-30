@@ -1,7 +1,12 @@
+"use client";
+
 import Image from 'next/image'
 import styles from './page.module.css'
+import { useAppSelector } from '@/redux/hooks'
 
 export default function Home() {
+  const auth = useAppSelector(state=>state.auth.isAuthenticated)
+  console.log(auth) 
   return (
     <main className={styles.main}>
       <div className={styles.description}>
