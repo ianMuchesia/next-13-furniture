@@ -1,5 +1,5 @@
 const express = require("express");
-const { authorizePermissions} = require("../middleware/authentication");
+const { authorizePermission} = require("../middleware/authentication");
 const router = express.Router();
 
 const {
@@ -13,9 +13,9 @@ const {
 //products
 router.get("/", getAllProductsByCategory);
 
-router.post("/", authorizePermissions("admini"), createProduct);
-router.delete("/:id", authorizePermissions("admini"), deleteProduct);
-router.patch("/", authorizePermissions("admini"), updateProduct);
+router.post("/", authorizePermission("admini"), createProduct);
+router.delete("/:id", authorizePermission("admini"), deleteProduct);
+router.patch("/", authorizePermission("admini"), updateProduct);
 router.get("/:id", getSingleProduct);
 
 module.exports = router;
