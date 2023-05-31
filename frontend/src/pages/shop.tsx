@@ -33,14 +33,15 @@ const shop = () => {
           </button>
         </div>
 
-        <div className="">
-          <div className="">
+        <div className="shop-sort-bar">
+          <div className="shop-sort-bar-left">
+            <div className="shop-sort-layout">
             <GiHamburgerMenu />
             <BsGrid3X3GapFill />
-
+            </div>
             <h4>22 Products </h4>
           </div>
-          <div className="">
+          <div className="shop-sort-bar-right">
             <h4>Sort By</h4>
             <select name="sort" id="sort">
               <option>Price(Lowest)</option>
@@ -49,6 +50,22 @@ const shop = () => {
               <option>Name(Z-A)</option>
             </select>
           </div>
+        </div>
+
+        <div className="shop-products">
+        <div className="flip-card">
+  <div className="flip-card-inner">
+    <div className="flip-card-front">
+      {/* <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;"> */}
+      <h1>Yess</h1>
+    </div>
+    <div className="flip-card-back">
+      <h1>John Doe</h1>
+      <p>Architect & Engineer</p>
+      <p>We love that guy</p>
+    </div>
+  </div>
+</div>
         </div>
       </div>
     </>
