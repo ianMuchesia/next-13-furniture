@@ -8,7 +8,7 @@ import { GetStaticPropsContext } from 'next';
 
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import Product from '@/components/Product';
-import { addToCart, removeSingleItemFromCart } from '@/redux/features/cartSlice';
+import { addToCart, removeSingleItemFromCart, setShowCart } from '@/redux/features/cartSlice';
 
 interface Props {
   product:typeProduct;
@@ -35,6 +35,12 @@ const ProductDetails = ({ product, products }:Props) => {
     
   
     const cartItem = cart.itemsList.find(item=>item._id === product._id)
+
+
+    const handleBuyNow=()=>{
+      dispatch(addToCart(product))
+      dispatch(setShowCart(true))
+    }
     return (
       <div>
         <div className="product-detail-container">
@@ -81,7 +87,7 @@ const ProductDetails = ({ product, products }:Props) => {
             </div>
             <div className="buttons">
               <button type="button" className="add-to-cart"  onClick={()=>dispatch(addToCart(product))}>Add to Cart</button>
-              <button type="button" className="buy-now">Buy Now</button>
+              <button type="button" className="buy-now" onClick={handleBuyNow}>Buy Now</button>
             </div>
           </div>
         </div>

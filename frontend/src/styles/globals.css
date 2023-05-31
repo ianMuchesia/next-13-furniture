@@ -12,9 +12,18 @@ body, * {
 ::-webkit-scrollbar {
   width: 0px;
 }
+li{
+  list-style: none;
+}
 
 body{
   background: #f1f1f1;
+}
+nav ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap:2em
 }
 .main-container{
   max-width: 1400px; 
@@ -352,7 +361,11 @@ Footer Banner
   font-size: 14px;
   font-weight: 300;
 }
-
+/*
+=============== 
+Cart
+===============
+*/
 
 
 .cart-wrapper{
@@ -779,7 +792,7 @@ margin-top: 160px;
     height: 350px;
   }
   .cart-container{
-    width: 415px;
+    width: 70%;
   padding: 4px;
   }
   .cart-heading{
@@ -872,4 +885,65 @@ animation
     font-size: 35px;
   }
   
+}
+
+
+
+
+
+
+
+
+/*
+=============== 
+Shop
+===============
+*/
+.shop-categorize{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  gap:1em;
+}
+.shop-categorize .search{
+  padding: 0.1em 0.5em;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+}
+.category > ul{
+  margin: 0.5em 0em;
+  display: flex;
+  flex-direction: column;
+  gap:0.2em;
+  justify-content: space-around;
+}
+.category> ul> li{
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+}
+
+.category> ul> li:hover{
+  transform: scaleX(1.1);
+
+}
+
+.shop-price-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5em 0em;
+}
+
+.clear-btn{
+  background: purple;
+  color: white;
+  border: none;
+  padding: 0.2em 0.4em;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  margin: 1em 0em;
 }

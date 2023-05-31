@@ -15,12 +15,19 @@ const Navbar = () => {
       <p className="logo">
         <Link href="/">Get Comfy Furnitures</Link>
       </p>
-
+      <nav className="">
+      <ul>
+        <li className="logo"> <Link href="/">Home</Link></li>
+        <li className="logo"> <Link href="/shop">Shop</Link></li>
+        <li> 
       <button type="button" className="cart-icon"  onClick={() => dispatch(setShowCart(true))}>
         <AiOutlineShopping />
         <span className="cart-item-qty">{cartItems.totalQuantity}</span>
-      </button>
+      </button></li>
+      </ul>
+     
 {cartItems.showCart && <Cart />}
+</nav>
     </div>
   )
 }

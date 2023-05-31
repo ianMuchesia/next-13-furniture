@@ -21,7 +21,7 @@ const Cart = () => {
      >
         <AiOutlineLeft />
         <span className="heading">Your Cart</span>
-        <span className="cart-num-items">(2 items)</span>
+        <span className="cart-num-items">({cartItems.itemsList.length} items)</span>
       </button>
 
       {cartItems.itemsList.length < 1 && (
@@ -46,8 +46,12 @@ const Cart = () => {
             <img src={item?.imageUrl} className="cart-product-image" />
             <div className="item-desc">
               <div className="flex top">
-                <h5>{item.name}</h5>
-                <h4>${item.price}</h4>
+                <h5>{item.name.slice(0,10)}</h5>
+                <h4>Ksh. {item.price.toLocaleString()}</h4>
+              </div>
+              <div className="flex top">
+                <h5>Qty X {item.quantity}</h5>
+                <h4>{item.totalPrice.toLocaleString()}</h4>
               </div>
               <div className="flex bottom">
                 <div>
@@ -75,7 +79,7 @@ const Cart = () => {
         <div className="cart-bottom">
           <div className="total">
             <h3>Subtotal:</h3>
-            <h3>${cartItems.subTotal}</h3>
+            <h3>Ksh. {cartItems.subTotal.toLocaleString()}</h3>
           </div>
           <div className="btn-container">
             <button type="button" className="btn">
