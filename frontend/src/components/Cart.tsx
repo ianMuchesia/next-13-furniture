@@ -43,7 +43,7 @@ const Cart = () => {
        <div className="product-container">
         {cartItems.itemsList.length >= 1 && cartItems.itemsList.map((item) => (
           <div className="product" key={item._id}>
-            <img src={item?.images[0]} className="cart-product-image" />
+            <img src={item?.imageUrl} className="cart-product-image" />
             <div className="item-desc">
               <div className="flex top">
                 <h5>{item.name}</h5>
@@ -79,7 +79,7 @@ const Cart = () => {
           </div>
           <div className="btn-container">
             <button type="button" className="btn">
-              Pay with Stripe
+              CHECKOUT
             </button>
           </div>
         </div>

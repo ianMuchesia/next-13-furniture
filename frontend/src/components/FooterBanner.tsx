@@ -15,20 +15,20 @@ const FooterBanner = () => {
           <p>Best Solo Air</p>
           <h3>Summer Sale</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adip
+          Discover a wide range of  comfortable furniture options
           </p>
           {/* <Link href={`/product/${product}`}> */}
           <button type="button">Shop Now</button>
           {/*  </Link> */}
         </div>
 
-        <Image
+         <Image
           width={500}
           height={500}
           alt="footer image"
-          src="/FooterBanner.webp"
+          src="/FooterBanner.png"
           className="footer-banner-image"
-        />
+        /> 
       </div>
     </div>
   );

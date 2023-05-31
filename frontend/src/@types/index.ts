@@ -21,7 +21,7 @@ export interface cartProductModel{
     
     price: number;
     
-    images:string[];
+    imageUrl:string;
     
   
     quantity:number;

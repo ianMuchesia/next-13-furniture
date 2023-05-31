@@ -12,10 +12,11 @@ import FooterBanner from '@/components/FooterBanner'
 
 interface Props{
   products: typeProduct[];
+  error:string;
 }
-export default function Home({products}:Props) {
+export default function Home({products, error}:Props) {
 
-  console.log(products)
+ 
   return (
     <>
       <Head>
@@ -32,8 +33,12 @@ export default function Home({products}:Props) {
     </div>
   
     <div className="products-container">
-      {products?.map((product) => <Product key={product._id} product={product} />)}
-    </div>
+      
+  {products?.length > 1 ? (
+    products.map((product) => <Product key={product._id} product={product} />)
+  ) :(<h1>Loading...</h1>)}
+</div>
+
 
       <FooterBanner/>
       </div>
@@ -44,12 +49,16 @@ export default function Home({products}:Props) {
   
 }
 
-export const getServerSideProps = async()=>{
-  const {data} = await axios.get('http://localhost:3000/api/v1/products')
-
-  const products = data.products.slice(0,8)
-return{
-  props: {products}
-}
-
-}
+export const getServerSideProps = async () => {
+  try {
+    const { data } = await axios.get('http://localhost:3000/api/v1/products');
+    const products = data.products.slice(0, 8);
+    return {
+      props: { products },
+    };
+  } catch (error) {
+    return {
+      props: { error: 'Failed to fetch products' },
+    };
+  }
+};
