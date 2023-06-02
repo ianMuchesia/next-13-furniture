@@ -16,7 +16,7 @@ interface Props{
 }
 export default function Home({products, error}:Props) {
 
- 
+ console.log(products)
   return (
     <>
       <Head>
@@ -51,7 +51,7 @@ export default function Home({products, error}:Props) {
 
 export const getServerSideProps = async () => {
   try {
-    const { data } = await axios.get('http://localhost:3000/api/v1/products');
+    const { data } = await axios.get('http://localhost:4000/api/v1/products');
     const products = data.products.slice(0, 8);
     return {
       props: { products },

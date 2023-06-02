@@ -12,7 +12,13 @@ const shop = () => {
       </Head>
       <div className="shop-container">
         <div className="shop-categorize">
-          <input type="search" name="search" id="search" className="search" placeholder="search" />
+          <input
+            type="search"
+            name="search"
+            id="search"
+            className="search"
+            placeholder="search"
+          />
 
           <div className="category">
             <h4>Category</h4>
@@ -25,8 +31,13 @@ const shop = () => {
             </ul>
           </div>
           <div className="shop-price-container">
-          <label htmlFor="price">Price</label>
-          <input type="range" name="price" id="price" className="input-price" />
+            <label htmlFor="price">Price</label>
+            <input
+              type="range"
+              name="price"
+              id="price"
+              className="input-price"
+            />
           </div>
           <button type="button" className="clear-btn">
             Clear Filters
@@ -36,8 +47,8 @@ const shop = () => {
         <div className="shop-sort-bar">
           <div className="shop-sort-bar-left">
             <div className="shop-sort-layout">
-            <GiHamburgerMenu />
-            <BsGrid3X3GapFill />
+              <GiHamburgerMenu />
+              <BsGrid3X3GapFill />
             </div>
             <h4>22 Products </h4>
           </div>
@@ -53,19 +64,16 @@ const shop = () => {
         </div>
 
         <div className="shop-products">
-        <div className="flip-card">
-  <div className="flip-card-inner">
-    <div className="flip-card-front">
-      {/* <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;"> */}
-      <h1>Yess</h1>
-    </div>
-    <div className="flip-card-back">
-      <h1>John Doe</h1>
-      <p>Architect & Engineer</p>
-      <p>We love that guy</p>
-    </div>
-  </div>
-</div>
+              <div className="">
+                <img src="" alt="" />
+                <div className="">
+                  <div className="">name</div>
+                  <div className="">Price</div>
+                </div>
+                <div className="">
+                  Add to cart
+                </div>
+              </div>
         </div>
       </div>
     </>

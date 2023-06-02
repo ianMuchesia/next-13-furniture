@@ -56,81 +56,89 @@ const deleteProduct = async (req, res) => {
 
 const getAllProductsByCategory = async (req, res) => {
   
-    const {
-      featured,
-      category,
-      search,
-      sort,
-      fields,
-      brand,
-      numericFilters,
-      page,
-    } = req.query;
 
-    const queryObject = {};
-    //featured
-    if (featured) {
-      queryObject.featured = featured === "true" ? true : false;
-    }
+  const products = await Product.find({})
 
-    //category
-    if (category) {
-      queryObject.category = category;
-    }
-    //brand
-    if (brand) {
-      queryObject.brand = brand;
-    }
-    //search for an item
-    if (search) {
-      queryObject.name = { $regex: search, $options: "i" };
-    }
-    if (numericFilters) {
-      const opertorMap = {
-        ">": "$gt",
-        ">=": "$gte",
-        "=": "$eq",
-        "<": "$lt",
-        "<=": "$lte",
-      };
-      const regEx = /\b(<|>|>=|=|<|<=)\b/g;
-      let filters = numericFilters.replace(
-        regEx,
-        (match) => `-${opertorMap[match]}-`
-      );
-      const options = ["price", "rating"];
-      filters = filters.split(",").forEach((item) => {
-        const [field, operator, value] = item.split("-");
-        if (options.includes(field)) {
-          queryObject[field] = { [operator]: Number(value) };
-        }
-      });
-      //console.log(queryObject)
-    }
+  res.status(StatusCodes.OK).json({
+    success: true,
+    products,
+  });
+    // const {
+    //   featured,
+    //   category,
+    //   search,
+    //   sort,
+    //   fields,
+    //   brand,
+    //   numericFilters,
+    //   page,
+    // } = req.query;
 
-    let result = Product.find(queryObject);
-    if (sort) {
-      const sortArray = sort.split(",").join(" ");
-      result = result.sort(sortArray);
-    } else {
-      result = result.sort("createdAt");
-    }
-    //select the only one you want to see
-    if (fields) {
-      const fieldList = fields.split(",").join(" ");
-      result = result.select(fieldList);
-    }
-    //setting up pagination functionality
-    if (page) {
-      const pagination = Number(page);
-      const limit = Number(req.query.limit) || 9;
-      const skip = (pagination - 1) * limit;
+    // const queryObject = {};
+    // //featured
+    // if (featured) {
+    //   queryObject.featured = featured === "true" ? true : false;
+    // }
 
-      result = result.skip(skip).limit(limit);
-    }
+    // //category
+    // if (category) {
+    //   queryObject.category = category;
+    // }
+    // //brand
+    // if (brand) {
+    //   queryObject.brand = brand;
+    // }
+    // //search for an item
+    // if (search) {
+    //   queryObject.name = { $regex: search, $options: "i" };
+    // }
+    // if (numericFilters) {
+    //   const opertorMap = {
+    //     ">": "$gt",
+    //     ">=": "$gte",
+    //     "=": "$eq",
+    //     "<": "$lt",
+    //     "<=": "$lte",
+    //   };
+    //   const regEx = /\b(<|>|>=|=|<|<=)\b/g;
+    //   let filters = numericFilters.replace(
+    //     regEx,
+    //     (match) => `-${opertorMap[match]}-`
+    //   );
+    //   const options = ["price", "rating"];
+    //   filters = filters.split(",").forEach((item) => {
+    //     const [field, operator, value] = item.split("-");
+    //     if (options.includes(field)) {
+    //       queryObject[field] = { [operator]: Number(value) };
+    //     }
+    //   });
+    //   //console.log(queryObject)
+    // }
 
-    const products = await result;
-    res.status(200).json({  products, nbHits: products.length });
+    // let result = Product.find(queryObject);
+    // if (sort) {
+    //   const sortArray = sort.split(",").join(" ");
+    //   result = result.sort(sortArray);
+    // } else {
+    //   result = result.sort("createdAt");
+    // }
+    // //select the only one you want to see
+    // if (fields) {
+    //   const fieldList = fields.split(",").join(" ");
+    //   result = result.select(fieldList);
+    // }
+    // //setting up pagination functionality
+    // if (page) {
+    //   const pagination = Number(page);
+    //   const limit = Number(req.query.limit) || 9;
+    //   const skip = (pagination - 1) * limit;
+
+    //   result = result.skip(skip).limit(limit);
+    // }
+
+    // const products = await result;
+    // console.log(products)
+    // res.status(200).json({  products, nbHits: products.length });
  
 };
 
