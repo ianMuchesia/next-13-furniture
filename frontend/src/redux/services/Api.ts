@@ -1,4 +1,4 @@
-import SingleProduct from "@/app/product/page";
+
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 

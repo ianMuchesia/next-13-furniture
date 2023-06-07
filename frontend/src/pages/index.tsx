@@ -15,8 +15,9 @@ interface Props{
   error:string;
 }
 export default function Home({products, error}:Props) {
+  console.log('hello')
 
- console.log(products)
+ console.log(process.env.baseURL)
   return (
     <>
       <Head>
