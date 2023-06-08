@@ -110,7 +110,7 @@ const ProductDetails = ({ product, products }:Props) => {
 
 
   export const getStaticPaths = async()=>{
-    const {data} = await axios.get<ResponseDataAllProducts>('http://localhost:4000/api/v1/products')
+    const {data} = await axios.get<ResponseDataAllProducts>(`${process.env.baseURL}products`)
 
     const {products } = data
     const paths = products.map(product=>({
@@ -132,10 +132,10 @@ const ProductDetails = ({ product, products }:Props) => {
   export const getStaticProps = async(context: GetStaticPropsContext)=>{
     const { params } = context;
     const { id } = params as { id: string };
-    const {data:product} = await axios.get<ResponseDataSingleProduct>(`http://localhost:4000/api/v1/products/${id}`)
+    const {data:product} = await axios.get<ResponseDataSingleProduct>(`${process.env.baseURL}products/${id}`)
 
 
-    const { data:AllProducts} = await axios.get<ResponseDataAllProducts>('http://localhost:4000/api/v1/products')
+    const { data:AllProducts} = await axios.get<ResponseDataAllProducts>(`${process.env.baseURL}products`)
 
     const {products} = AllProducts
 

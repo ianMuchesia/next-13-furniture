@@ -1,7 +1,23 @@
+import { typeProduct } from "@/@types";
+import axios from "axios";
+import styles from '@/styles/Home.module.css'
 import Head from "next/head";
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
-const shop = () => {
+import ShopProducts from "@/components/ShopProducts";
+
+
+interface Props{
+  products: typeProduct[];
+  error:string;
+}
+const shop = ({products, error}:Props) => {
+
+  if(error){
+    return <h1>Something wrong happened, please check your connection</h1>
+  }
+
+
   return (
     <>
       <Head>
@@ -10,74 +26,27 @@ const shop = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+     
       <div className="shop-container">
-        <div className="shop-categorize">
-          <input
-            type="search"
-            name="search"
-            id="search"
-            className="search"
-            placeholder="search"
-          />
-
-          <div className="category">
-            <h4>Category</h4>
-            <ul>
-              <li>Office</li>
-              <li>Living Room</li>
-              <li>Kitchen</li>
-              <li>Bedroom</li>
-              <li>Dining Room</li>
-            </ul>
-          </div>
-          <div className="shop-price-container">
-            <label htmlFor="price">Price</label>
-            <input
-              type="range"
-              name="price"
-              id="price"
-              className="input-price"
-            />
-          </div>
-          <button type="button" className="clear-btn">
-            Clear Filters
-          </button>
-        </div>
-
-        <div className="shop-sort-bar">
-          <div className="shop-sort-bar-left">
-            <div className="shop-sort-layout">
-              <GiHamburgerMenu />
-              <BsGrid3X3GapFill />
-            </div>
-            <h4>22 Products </h4>
-          </div>
-          <div className="shop-sort-bar-right">
-            <h4>Sort By</h4>
-            <select name="sort" id="sort">
-              <option>Price(Lowest)</option>
-              <option>Price(Highest)</option>
-              <option>Name(A-Z)</option>
-              <option>Name(Z-A)</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="shop-products">
-              <div className="">
-                <img src="" alt="" />
-                <div className="">
-                  <div className="">name</div>
-                  <div className="">Price</div>
-                </div>
-                <div className="">
-                  Add to cart
-                </div>
-              </div>
-        </div>
-      </div>
-    </>
+        <ShopProducts products={products}/>
+      </div>    </>
   );
 };
 
 export default shop;
+
+
+export const getServerSideProps = async() => {
+  try {
+    const {data} = await axios.get(`${process.env.baseURL}products`);
+
+    const {products} = data
+    return{
+      props: {products}
+    }
+  } catch (error) {
+    return {
+      props: {error: 'Failed to fetch Products'}
+    }
+  }
+}
