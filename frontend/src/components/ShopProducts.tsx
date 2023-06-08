@@ -1,10 +1,14 @@
 import { typeProduct } from "@/@types";
+import { addToCart } from "@/redux/features/cartSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import { useGetAllProductsQuery } from "@/redux/services/Api";
 import React, { useState } from "react";
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const ShopProducts = () => {
+
+    const dispatch = useAppDispatch()
   const [search, setSearch] = useState("");
 
   const [sort, setSort] = useState("");
@@ -30,10 +34,13 @@ const ShopProducts = () => {
     setSearch("");
     setCategory("");
     setSelectedRange(0);
-    setSort("");
+   
   };
 
-  console.log(isLoading)
+
+
+
+
 
   return (
     <>
@@ -168,7 +175,7 @@ const ShopProducts = () => {
                   <div className="">{product.name}</div>
                   <div className="">Ksh.{product.price.toLocaleString()}</div>
                 </div>
-                <div className="shop-products-btn">Add to cart</div>
+                <div className="shop-products-btn" onClick={()=>{dispatch(addToCart(product))}}>Add to cart</div>
               </div>
             ))}
         </div>

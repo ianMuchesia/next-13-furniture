@@ -26,7 +26,7 @@ const FooterBanner = () => {
           width={500}
           height={500}
           alt="footer image"
-          src="/FooterBanner.png"
+          src="/footerBanner.png"
           className="footer-banner-image"
         /> 
       </div>
