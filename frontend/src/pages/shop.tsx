@@ -7,15 +7,10 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import ShopProducts from "@/components/ShopProducts";
 
 
-interface Props{
-  products: typeProduct[];
-  error:string;
-}
-const shop = ({products, error}:Props) => {
 
-  if(error){
-    return <h1>Something wrong happened, please check your connection</h1>
-  }
+const shop = () => {
+
+
 
 
   return (
@@ -28,7 +23,7 @@ const shop = ({products, error}:Props) => {
       </Head>
      
       <div className="shop-container">
-        <ShopProducts products={products}/>
+        <ShopProducts />
       </div>    </>
   );
 };
@@ -36,17 +31,3 @@ const shop = ({products, error}:Props) => {
 export default shop;
 
 
-export const getServerSideProps = async() => {
-  try {
-    const {data} = await axios.get(`${process.env.baseURL}products`);
-
-    const {products} = data
-    return{
-      props: {products}
-    }
-  } catch (error) {
-    return {
-      props: {error: 'Failed to fetch Products'}
-    }
-  }
-}

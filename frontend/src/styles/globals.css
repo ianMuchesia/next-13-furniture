@@ -901,6 +901,9 @@ animation
 Shop
 ===============
 */
+.shop-container{
+  min-height: 100vh;
+}
 .shop-categorize{
   display: flex;
   flex-direction: column;
@@ -919,7 +922,7 @@ Shop
   margin: 0.5em 0em;
   display: flex;
   flex-direction: column;
-  gap:0.2em;
+  gap:0.5em;
   justify-content: space-around;
 }
 .category> ul> li{
