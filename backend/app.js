@@ -24,6 +24,7 @@ const connectDB = require('./database/connectDB')
 
 
 //routers
+const authRouter = require('./routes/authRouter')
 const productRouter = require('./routes/productRouter')
 
 
@@ -51,6 +52,8 @@ app.use(express.json())
 
 
 //routes
+app.use("/api/v1/auth",authRouter)
+
 app.use("/api/v1/products",productRouter)
 
 
