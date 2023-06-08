@@ -106,9 +106,9 @@ const Cart = () => {
               <h3>Subtotal:</h3>
               <h3>Ksh. {cartItems.subTotal.toLocaleString()}</h3>
             </div>
-              <button type="button" className="btn">
+             <Link href="/checkout"> <button type="button" className="btn">
                 Proceed to Checkout
-              </button>
+              </button></Link>
 
             </div>
            
