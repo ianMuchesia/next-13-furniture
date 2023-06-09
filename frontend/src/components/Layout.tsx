@@ -10,14 +10,14 @@ interface LayoutProps {
 
 const Layout = ({ children }:LayoutProps) => {
     return (
-      <div className="layout">
+      <div className="">
         <Head>
           <title>Example Store</title>
         </Head>
         <header>
           <Navbar />
         </header>
-        <main className="main-container">
+        <main className="main-container layout">
           {children}
         </main>
         <footer>

@@ -33,21 +33,15 @@ body{
   background: #f1f1f1;
   font-family:  'Montserrat', 'Lexend',sans-serif;
 }
-nav ul{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap:2em
-}
+
+
 .main-container{
   max-width: 1400px; 
   margin: auto;
   width: 100%;
   
   }
-  .layout{
-    padding: 10px;
-  }
+ 
 
 h1 , h2 , h3 , h4 , h5 , h6{
   font-family: var(--headingFont);
@@ -72,14 +66,8 @@ width: 100%;
 }
 .layout{
   padding: 10px;
-}
+} 
 
-.navbar-container{
-  display: flex;
-  justify-content: space-between;
-  margin: 6px 18px;
-  position: relative;
-}
 
 /*
 =============== 
@@ -118,6 +106,19 @@ animation
     -webkit-text-stroke: 1px purple;
     margin-left: 6px;
 }
+
+
+/*
+=============== 
+Navbar
+===============
+*/
+
+
+
+
+
+
 .logo{
   color: gray;
   font-size: 18px;
@@ -188,89 +189,8 @@ Hero Banner
 ===============
 */
 
-.hero-banner-container{
-  padding: 100px 40px;
-  background-color: #dcdcdc;
-  border-radius: 15px;
-  position: relative;
-  height: 500px;
-  line-height: 0.9; 
-  width: 100%;
-
-}
-.hero-banner-container .beats-solo{
-  font-size: 20px;
-}
-.hero-banner-container button{
-   border-radius: 15px;
-  padding: 10px 16px;
-  background-color: purple;
-  color: white;
-  border: none;
-  margin-top: 10px;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  z-index:10000 !important;
-  transition: 0.4s ease-in-out;
-}
-.hero-banner-container button:hover{
-  background: none;
-  color:purple;
-  border: 1px solid purple;
-}
-.hero-banner-container h3{
-  font-size: 4rem;
-  margin-top: 4px;
-}
-.hero-banner-container h1{
-  color: white;
-  font-size: 8em;
-
-  text-transform: uppercase;
-}
-.hero-banner-image{
-  position: absolute;
-  top: 0%;
-  right:20%;
-  width: 450px;
-  height: 450px;
-}
 
 
-.desc{
-position: absolute;
-right: 10%;
-bottom: 5%;
-width: 300px;
-line-height: 1.3;
-display: flex;
-flex-direction: column;
- color: #324d67;
-
-}
-.desc p{
-  color: #5f5f5f;
-  font-weight: 100;
-text-align: end;
-
-}
-.desc h5{
-  margin-bottom: 12px;
-  font-weight: 700;
-  font-size: 16px;
-  /* color: black; */
-  align-self: flex-end;
-}
-.desc h5, .desc p{
-  display: none;
-}
-
-@media screen and (min-width:600px) {
-  .desc h5, .desc p{
-    display: block;
-  }
-}
 /*
 =============== 
 Featured
@@ -299,82 +219,6 @@ Featured
 Footer Banner
 ===============
 */
-
-.footer-banner-container{
-  padding: 70px 40px;
-  background-color: purple;
-  border-radius: 15px;
-  position: relative;
-  /* height: 400px; */
-  line-height: 1; 
-  color: white;
-  width: 100%;
-  margin-top: 120px;
-}
-.banner-desc{
-  display: flex ;
-  justify-content: space-between;
-}
-.banner-desc button{
-  border-radius: 15px;
-  padding: 10px 16px;
-  background-color: white;
-  color: red;
-  border: none;
-  /* margin-top: 40px; */
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-}
-.banner-desc .left h3{
-  font-weight: 900;
-  font-size: 80px;
-  margin-left: 25px;
-  text-transform: uppercase;
-}
-.banner-desc .left p{
-  margin:18px;
-  text-transform: capitalize;
-}
-.footer-banner-image{
-  position: absolute;
-  top: -35%;
-  left: 8%;
-  top: -25%;
-  left: 25%;
-  display:none;
-}
-@media screen and (min-width:500px) {
-  .footer-banner-image{
-    display:block;
-  }
-}
- @media screen and (min-width:700px) {
-  .footer-banner-image{
-    display:none;
-  }
-}
-
-@media screen and (min-width:1210px) {
-  .footer-banner-image{
-    display:block;
-  }
-}
-.banner-desc .right{
-  line-height: 1.4;
-}
-.banner-desc .right h3{
-  font-weight: 800;
-  font-size: 60px;
-  text-transform: uppercase;
-}
-.banner-desc .right p{
-  font-size: 18px;
-}
-.banner-desc .right .company-desc{
-  font-size: 14px;
-  font-weight: 300;
-}
 /*
 =============== 
 Cart
@@ -404,7 +248,11 @@ Cart
 }
 
 
-
+/*
+=============== 
+Footer
+===============
+*/
 .footer-container{
   color: #324d67;
   text-align: center;

@@ -7,15 +7,29 @@ import { typeProduct } from '@/@types'
 import HeroBannner from '@/components/HeroBannner'
 import Product from '@/components/Product'
 import FooterBanner from '@/components/FooterBanner'
+import checkAuthentication from '@/redux/services/authCheck'
+import { useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
 
 
 interface Props{
   products: typeProduct[];
+ 
   error:string;
 }
 export default function Home({products, error}:Props) {
  
+  const dispatch = useAppDispatch()
+
+  useEffect(()=>{
+   dispatch(checkAuthentication())
+  },[])
+
+
+
+  
+  
   return (
     <>
       <Head>
@@ -52,6 +66,9 @@ export const getServerSideProps = async () => {
   try {
     const { data } = await axios.get(`${process.env.baseURL}products`);
     const products = data.products.slice(0, 8);
+
+
+    //const auth = checkAuthentication()
     return {
       props: { products },
     };

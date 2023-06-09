@@ -19,10 +19,11 @@ const checkAuthentication=()=>{
                     userId,
                     role
                 }))
+
                 
             }
             
-
+           
         } catch (error) {
             dispatch(setisNotAuthenticated())
         }
