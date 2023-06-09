@@ -19,6 +19,14 @@ const HeroBannner = () => {
           </div>
         </div>
       </div>
+      <div className="">
+        <Image
+        src='/hero.jpg'
+        height={500}
+        width={300}
+        alt="image"/>
+
+      </div>
     </div>
   )
 }
