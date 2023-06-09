@@ -1,3 +1,5 @@
+import { setIsAuthenticated } from "@/redux/features/authSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import axios from "axios";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -5,6 +7,12 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const LoginForm = () => {
+
+  const dispatch = useAppDispatch()
+
+  const user = useAppSelector(state=>state.auth.user)
+
+ 
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
@@ -27,7 +35,7 @@ const LoginForm = () => {
 
     try {
       const { data } = await axios.post(
-        `${process.env.baseURL}auth/login`,
+        `http://localhost:4000/api/v1/auth/login`,
         {
           email,
           password,
@@ -40,10 +48,14 @@ const LoginForm = () => {
 
         const { name, userId, role } = data.user;
 
+        dispatch(setIsAuthenticated({
+          name, userId, role
+        }))
         setLoginForm({
           email: "",
           password: "",
         });
+
 
         setTimeout(() => {}, 2000);
       }
