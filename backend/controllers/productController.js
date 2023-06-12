@@ -132,7 +132,8 @@ const getAllProductsByCategory = async (req, res) => {
     }
 
     const products = await result;
-    console.log(products)
+  
+    
     res.status(200).json({  products, nbHits: products.length });
  
 };
