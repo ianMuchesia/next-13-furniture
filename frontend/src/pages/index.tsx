@@ -52,8 +52,8 @@ export default function Home({products, error}:Props) {
   ) :(<h1>Loading...</h1>)}
 </div>
 
-
-      <FooterBanner/>
+{/* 
+      <FooterBanner/> */}
       </div>
 
     </>
